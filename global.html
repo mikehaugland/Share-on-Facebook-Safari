@@ -1,0 +1,23 @@
+<!--
+  Author: Mike Haugland
+  URL: http://mikehaugland.com/
+
+  Title: Share on Facebook
+  Description: A simple extension to share the current page on Facebook.
+-->
+
+<!DOCTYPE html>
+<script type="text/javascript">
+safari.application.addEventListener("command", share, false);
+
+function share(event)
+{
+  if (event.command = "share") {
+    var url = "http://www.facebook.com/sharer.php?u=" + encodeURIComponent(event.target.browserWindow.activeTab.url) + "&t=" + encodeURIComponent(event.target.browserWindow.activeTab.title);
+    var newTab = safari.application.activeBrowserWindow.openTab();
+    newTab.url = url;
+  } else {
+    alert("Whoa, something terribly wrong has happened.");
+  }
+}
+</script>
